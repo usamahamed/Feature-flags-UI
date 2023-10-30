@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feature Flags Management</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.materialdesignicons.com/3.6.95/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Create a Feature Flag</h1>
+    <form id="featureFlagForm">
+      <div class="grid">
+        <div class="general-info">
+          <div class="flex flex-start">
+            <!-- Name -->
+            <div class="flag-name">
+              <label for="flagName">Flag Name:</label>
+              <input
+                placeholder="Enter Flag Name"
+                type="text"
+                id="flagName"
+                name="flagName"
+                required
+              />
+            </div>
+            <!-- Is Group Flag -->
+            <div class="is-group-flag">
+              <label>Group Flag</label>
+              <label for="isGroupFlag" class="switch-label">
+                <div class="switch">
+                  <input
+                    type="checkbox"
+                    id="isGroupFlag"
+                    class="toggle-input"
+                  />
+                  <span class="slider round"></span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Child Flag Name -->
+          <div id="childFlagNameContainer" class="disable-child-flag">
+            <label for="childFlagName">Child Flag Name:</label>
+            <input
+              disabled="true"
+              type="text"
+              id="childFlagName"
+              name="childFlagName"
+              placeholder="Enter Child Flag Name"
+              required
+            />
+          </div>
+          <!-- Description -->
+          <div>
+            <label for="flagDescription">Description:</label>
+            <textarea
+              id="flagDescription"
+              name="flagDescription"
+              placeholder="Enter Flag description"
+              rows="6"
+              required
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="settings-info">
+          <!-- Value type -->
+          <div>
+            <label for="flagValueType">Value Type:</label>
+            <select id="flagValueType" name="flagValueType">
+              <option value="boolean" selected>Boolean</option>
+              <option value="text">Text</option>
+              <option value="json">JSON</option>
+            </select>
+          </div>
+
+          <!-- Environment -->
+          <div>
+            <label for="flagEnvironment">Environment:</label>
+            <select id="flagEnvironment" name="flagEnvironment">
+              <option value="production">Production</option>
+              <option value="staging">Staging</option>
+              <option value="development">Development</option>
+            </select>
+          </div>
+
+          <!-- Restriction Level -->
+          <div>
+            <label for="restrictionLevel">Restriction Level:</label>
+            <select id="restrictionLevel" name="restrictionLevel">
+              <option value="public">Public</option>
+              <option value="private">Private</option>
+            </select>
+          </div>
+
+          <!-- Flag grouping -->
+          <div class="wrapper">
+            <label for="flagGroupingTags">Flag Group:</label>
+            <input
+              placeholder="Enter group name and then Enter"
+              type="text"
+              id="flagGroupingTags"
+              autocomplete="off"
+            />
+            <div class="tag-container"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="flex">
+        <button id="saveFeatureFlag" class="submit-btn" disabled type="button">
+          Save Feature Flag
+        </button>
+      </div>
+    </form>
+    <h2>Stored Feature Flags</h2>
+    <input
+      type="text"
+      class="flag-search"
+      id="searchInput"
+      placeholder="Search flags..."
+    />
+    <table>
+      <thead>
+        <tr>
+          <th>Flag Name</th>
+          <th>SubFlag Name</th>
+          <th>Description</th>
+          <th>Value</th>
+          <th>Environment</th>
+          <th>Restriction Level</th>
+          <th>Flag Groups</th>
+          <th>Creation Date</th>
+          <th>Modified Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="flagsTableBody"></tbody>
+    </table>
+    <div class="pagination">
+      <button id="firstPageBtn">Go to First Page</button>
+      <button id="prevBtn" disabled>Previous</button>
+      <span id="pageIndicator">1 / x</span>
+      <button id="nextBtn">Next</button>
+      <button id="lastPageBtn">Go to Last Page</button>
+    </div>
+
+    <!-- sucess Modal -->
+    <div id="confirmationModal" class="modal">
+      <div class="container">
+        <div class="row">
+          <div
+            class="modalbox success col-sm-8 col-md-6 col-lg-5 center animate"
+          >
+            <div class="icon">
+              <span class="glyphicon glyphicon-ok"></span>
+            </div>
+            <h1>Success!</h1>
+            <p id="modalMessage"></p>
+            <button type="button" class="redo btn close-btn">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Confirmation Modal -->
+    <div id="customConfirmModal" class="modal">
+      <div class="modal-content">
+        <p id="confirmMessage"></p>
+        <button id="confirmYes">Yes</button>
+        <button id="confirmNo">No</button>
+      </div>
+    </div>
+  </body>
+</html>
