@@ -1,6 +1,6 @@
 // Constants
 const API_URL = "https://feature-flags-api.onrender.com/flags";
-const FLAGS_PER_PAGE = 4;
+const FLAGS_PER_PAGE = 10;
 
 // DOM elements
 const modal = document.getElementById("confirmationModal");
