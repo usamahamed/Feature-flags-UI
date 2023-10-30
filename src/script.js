@@ -262,14 +262,6 @@ const openEditForm = (flag, row) => {
   const formCell = row.insertCell();
   formCell.colSpan = 10;
   formCell.appendChild(form);
-
-  isGroupFlagCheckbox.checked = flag.isGroupFlag || false;
-  if (flag.isGroupFlag) {
-    childFlagNameInput.value = flag.childName || "";
-    childFlagNameContainer.style.display = "";
-  } else {
-    childFlagNameContainer.style.display = "none";
-  }
 };
 
 const createEditForm = (flag) => {
