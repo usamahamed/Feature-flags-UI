@@ -32,7 +32,7 @@ h1 {
 /* Form styles */
 form {
   background: var(--bg-white);
-  width: 80%;
+  width: 100%;
   margin: 20px auto;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
